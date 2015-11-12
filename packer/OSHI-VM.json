@@ -1,59 +1,41 @@
 {
   "variables": {
-    "alias": "trusty",
+    "alias": "willy",
     "disk_size": "40960",
-    "distro" : "lubuntu",
+    "distro": "ubuntu",
     "headless": "false",
-    "iso_checksum": "ef68089eb8ae2cfaf78cc89a01dfcb0e",
+    "iso_checksum": "fb4eef05edcabfc5cccd4cb44f3f9b48 ",
     "iso_checksum_type": "md5",
-    "iso_url": "http://cdimage.ubuntu.com/lubuntu/releases/14.04.3/release/lubuntu-14.04.3-desktop-amd64.iso",
-    "out_dir": "/srv/nfs1/vagrant.klas.or.id/box/{{isotime \"2006-01-02\"}}",
-    "shutdown_command": "echo 'shutdown -P -h now' > shutdown.sh; echo 'vagrant'|sudo -S sh 'shutdown.sh'",
-    "ssh_password": "vagrant",
-    "ssh_username": "vagrant",
+    "iso_url": "http://releases.ubuntu.com/15.10/ubuntu-15.10-server-amd64.iso",
+    "shutdown_command": "sudo poweroff",
+    "ssh_password": "user",
+    "ssh_username": "user",
     "ssh_wait_timeout": "1h",
     "vmname": "lubuntu-14.04.3-amd64"
   },
-  "builders": [
-  {
-	"type": "virtualbox-iso",
-	"boot_wait": "4s",
-	"disk_size": "{{ user `disk_size`}}",
-	"guest_os_type": "Ubuntu_64",
-	"headless": "{{ user `headless`}}",
-	"http_directory": ".",
-	"iso_checksum_type": "{{ user `iso_checksum_type` }}",
-	"iso_checksum": "{{ user `iso_checksum` }}",
-	"iso_url": "{{ user `iso_url` }}",
-	"shutdown_command": "{{user `shutdown_command`}}",
-	"ssh_password": "{{ user `ssh_password`}}",
-	"ssh_username": "{{ user `ssh_username`}}",
-	"ssh_wait_timeout": "{{ user `ssh_wait_timeout`}}",
-	"vm_name": "{{ user `vmname`}}",
-  	"vboxmanage": [
-        [ "modifyvm", "{{.Name}}", "--memory", "1024" ],
-        [ "modifyvm", "{{.Name}}", "--cpus",   "2"    ]
-      ],
-	"boot_command": [
-        "<esc><wait><esc><wait><enter><wait>",
-        "/linux noapic <wait>",
-        "auto locale=en_US <wait>",
-        "console-setup/ask_detect=false <wait>",
-        "console-setup/layoutcode=us<wait> ",
-        "console-setup/modelcode=pc105<wait> ",
-        "debian-installer=en_US <wait>",
-        "debconf/frontend=noninteractive <wait>",
-        "fb=false <wait>",
-        "hostname={{ .Name }} <wait>",
-        "kbd-chooser/method=us <wait>",
-        "keyboard-configuration/layout=USA <wait>",
-        "keyboard-configuration/modelcode=SKIP <wait>",
-        "keyboard-configuration/variant=USA <wait>",
-        "netcfg/get_domain={{ .Name }} <wait>",
-        "netcfg/get_hostname={{ .Name }} <wait>",
-        "preseed/url=http://vagrant.klas.or.id/preseed/{{ user `distro`}}.cfg <wait>",
-        "initrd=/initrd.gz -- <enter><wait>"
-      ]
-    }
-  ]
+  "builders": [{
+    "type": "virtualbox-iso",
+    "boot_wait": "4s",
+    "disk_size": "{{ user `disk_size`}}",
+    "guest_os_type": "Ubuntu_64",
+    "headless": "{{ user `headless`}}",
+    "http_directory": ".",
+    "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+    "iso_checksum": "{{ user `iso_checksum` }}",
+    "iso_url": "{{ user `iso_url` }}",
+    "shutdown_command": "{{user `shutdown_command`}}",
+    "ssh_password": "{{ user `ssh_password`}}",
+    "ssh_username": "{{ user `ssh_username`}}",
+    "ssh_wait_timeout": "{{ user `ssh_wait_timeout`}}",
+    "vm_name": "{{ user `vmname`}}",
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "1024"],
+      ["modifyvm", "{{.Name}}", "--cpus", "2"]
+    ],
+    "boot_command": [
+      "<esc><wait>",
+      "<esc><wait>",
+      "<enter><wait>"
+    ]
+  }]
 }
