@@ -15,7 +15,7 @@
     "ssh_password": "user",
     "ssh_username": "user",
     "ssh_wait_timeout": "1h",
-    "vm-name": "ubuntu-15.10-server-amd64"
+    "vm_name": "ubuntu-15.10-server-amd64"
   },
   "builders": [{
     "boot_command": [
@@ -56,7 +56,7 @@
     "ssh_username": "{{ user `ssh_username`}}",
     "ssh_wait_timeout": "{{ user `ssh_wait_timeout`}}",
     "type": "virtualbox-iso",
-    "vm_name": "{{ user `vm-name`}}",
+    "vm_name": "{{ user `vm_name`}}",
     "vboxmanage": [
       ["modifyvm", "{{.Name}}", "--memory", "{{ user `memory`}}"],
       ["modifyvm", "{{.Name}}", "--cpus", "{{ user `cpu`}}"]
