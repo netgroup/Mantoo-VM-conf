@@ -1,41 +1,66 @@
 {
   "variables": {
     "alias": "willy",
+    "cpu": "1",
     "disk_size": "40960",
     "distro": "ubuntu",
     "headless": "false",
-    "iso_checksum": "fb4eef05edcabfc5cccd4cb44f3f9b48 ",
+    "hostname": "oshi-vm",
+    "iso_checksum": "fb4eef05edcabfc5cccd4cb44f3f9b48",
     "iso_checksum_type": "md5",
     "iso_url": "http://releases.ubuntu.com/15.10/ubuntu-15.10-server-amd64.iso",
-    "shutdown_command": "sudo poweroff",
+    "memory": "1024",
+    "preseed": "preseed.cfg",
+    "shutdown_command": "echo '{{ user `ssh_password` }}'|sudo -S shutdown -P now",
     "ssh_password": "user",
     "ssh_username": "user",
     "ssh_wait_timeout": "1h",
-    "vmname": "lubuntu-14.04.3-amd64"
+    "vm-name": "ubuntu-15.10-server-amd64"
   },
   "builders": [{
-    "type": "virtualbox-iso",
-    "boot_wait": "4s",
+    "boot_command": [
+      "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+      "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+      "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+      "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+      "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+      "<bs><bs><bs><bs>",
+      "/install/vmlinuz noapic ",
+      "file=/floppy/{{ user `preseed` }} ",
+      "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+      "hostname={{ user `hostname` }} ",
+      "grub-installer/bootdev=/dev/sda<wait> ",
+      "fb=false debconf/frontend=noninteractive ",
+      "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+      "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+      "passwd/user-fullname={{ user `ssh_fullname` }} ",
+      "passwd/user-password={{ user `ssh_password` }} ",
+      "passwd/user-password-again={{ user `ssh_password` }} ",
+      "passwd/username={{ user `ssh_username` }} ",
+      "initrd=/install/initrd.gz -- <enter>"
+    ],
     "disk_size": "{{ user `disk_size`}}",
+    "floppy_files": [
+      "http/{{ user `preseed` }}"
+    ],
     "guest_os_type": "Ubuntu_64",
+    "hard_drive_interface": "sata",
     "headless": "{{ user `headless`}}",
-    "http_directory": ".",
+    "http_directory": "http",
     "iso_checksum_type": "{{ user `iso_checksum_type` }}",
     "iso_checksum": "{{ user `iso_checksum` }}",
     "iso_url": "{{ user `iso_url` }}",
+    "output_directory": "output-{{ user `vm_name` }}-virtualbox-iso",
     "shutdown_command": "{{user `shutdown_command`}}",
     "ssh_password": "{{ user `ssh_password`}}",
     "ssh_username": "{{ user `ssh_username`}}",
     "ssh_wait_timeout": "{{ user `ssh_wait_timeout`}}",
-    "vm_name": "{{ user `vmname`}}",
+    "type": "virtualbox-iso",
+    "vm_name": "{{ user `vm-name`}}",
     "vboxmanage": [
-      ["modifyvm", "{{.Name}}", "--memory", "1024"],
-      ["modifyvm", "{{.Name}}", "--cpus", "2"]
+      ["modifyvm", "{{.Name}}", "--memory", "{{ user `memory`}}"],
+      ["modifyvm", "{{.Name}}", "--cpus", "{{ user `cpu`}}"]
     ],
-    "boot_command": [
-      "<esc><wait>",
-      "<esc><wait>",
-      "<enter><wait>"
-    ]
+    "virtualbox_version_file": ".vbox_version"
   }]
 }
