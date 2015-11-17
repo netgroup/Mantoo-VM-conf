@@ -4,7 +4,7 @@
     "cpu": "1",
     "disk_size": "40960",
     "distro": "ubuntu",
-    "headless": "true",
+    "headless": "false",
     "hostname": "oshi-vm",
     "iso_checksum": "fb4eef05edcabfc5cccd4cb44f3f9b48",
     "iso_checksum_type": "md5",
