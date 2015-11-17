@@ -1,0 +1,9 @@
+---
+  - name: Update apt-get cache (apt-get update)
+  - apt: update_cache=yes
+
+  - name: Upgrade packages (full upgrade)
+  - apt: upgrade=dist
+
+  - name: Install Python 2.x
+  - apt: name=python
