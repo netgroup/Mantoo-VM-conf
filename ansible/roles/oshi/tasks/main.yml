@@ -5,5 +5,14 @@
   - name: Upgrade packages (full upgrade)
   - apt: upgrade=dist
 
-  - name: Install Python 2.x
+  - name: Install Python (2.x in ubuntu 15.10)
   - apt: name=python
+
+  - name: Install Wireshark
+  - apt: name=wireshark
+
+  - name: Install traceroute
+  - apt: name=traceroute
+
+  - name: Install zerofree
+  - apt: name=zerofree
