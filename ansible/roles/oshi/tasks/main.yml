@@ -16,3 +16,6 @@
 
   - name: Install zerofree
   - apt: name=zerofree
+
+  - name: Install pip
+  - apt: python-pip
