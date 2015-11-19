@@ -1,12 +1,12 @@
 ---
   - name: Install netaddr (pip)
-  - pip: name=netaddr
+    pip: name=netaddr
 
   - name: Install ipaddress (pip)
-  - pip: name=ipaddress
+    pip: name=ipaddress
 
   - name: Install networkx (pip)
-  - apt: name=networkx
+    apt: name=networkx
 
   - name: install required packages (apt)
     action: apt pkg=$item state=installed
