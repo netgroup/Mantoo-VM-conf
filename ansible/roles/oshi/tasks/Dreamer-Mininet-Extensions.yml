@@ -7,24 +7,3 @@
 
   - name: Install networkx (pip)
     apt: name=networkx
-
-  - name: install required packages (apt)
-    action: apt pkg=$item state=installed
-    with_items:
-      - vim
-      - python-simplejson
-      - module-assistant
-      - python-qt4
-      - python-zopeinterface
-      - python-twisted-conch
-      - pkg-config
-      - dh-autoreconf
-      - ipcalc
-      - openvpn
-      - vlan
-      - quagga
-      - iproute
-      - sudo
-
-  - name: install linux-headers
-    action: shell apt-get install -y linux-headers-$(uname -r)
