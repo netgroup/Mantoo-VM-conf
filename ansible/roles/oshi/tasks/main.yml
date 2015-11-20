@@ -14,5 +14,5 @@
       - zerofree
       - python-pip
 
-    - name: Create workspace directory
-      file: path=/home/user/workspace state=directory mode=0755
+  - name: Create workspace directory
+    file: path=/home/user/workspace state=directory mode=0755
