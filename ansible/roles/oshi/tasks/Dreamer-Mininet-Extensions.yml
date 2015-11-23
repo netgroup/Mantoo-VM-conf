@@ -1,0 +1,9 @@
+---
+  - name: Install netaddr (pip)
+    pip: name=netaddr
+
+  - name: Install ipaddress (pip)
+    pip: name=ipaddress
+
+  - name: Install networkx (pip)
+    apt: name=networkx
