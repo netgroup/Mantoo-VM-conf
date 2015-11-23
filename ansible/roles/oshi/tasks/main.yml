@@ -6,7 +6,7 @@
     apt: upgrade=dist
 
   - name: install required packages (apt)
-    action: apt pkg=$item state=installed
+    action: apt pkg={{ item }} state=installed
     with_items:
       - python
       - wireshark
