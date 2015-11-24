@@ -75,6 +75,11 @@
       "role_paths": [
         "../ansible/roles/oshi"
       ]
+    },
+    {
+      "type": "file",
+      "source": "../ansible",
+      "destination": "/home/user"
     }
   ]
 }
