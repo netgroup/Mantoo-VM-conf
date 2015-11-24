@@ -16,3 +16,9 @@
 
   - name: Create workspace directory
     file: path=/home/user/workspace state=directory mode=0755
+
+  - name: Include Dreamer-Management-Scripts
+    include: Dreamer-Management-Scripts.yml
+
+  - name: Include Dreamer-Mininet-Extensions
+    include: Dreamer-Mininet-Extensions.yml

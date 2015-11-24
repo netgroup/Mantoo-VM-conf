@@ -1,0 +1,6 @@
+---
+  - name: Clone Dreamer-Management-Scripts
+    git: repo=https://github.com/netgroup/Dreamer-Management-Scripts.git dest=/home/user/workspace
+
+  - name: Setup Open vSwitch
+    script: /home/user/workspace/Dreamer-Management-Scripts/oshi/setup.sh
