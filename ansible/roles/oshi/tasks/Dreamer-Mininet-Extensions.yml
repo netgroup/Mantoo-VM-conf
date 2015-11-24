@@ -11,9 +11,6 @@
   - name: Install networkx (pip)
     apt: name=networkx
 
-  - name: Clone dreamer-ryu
-    git: repo=https://github.com/netgroup/dreamer-ryu.git dest=/home/user/workspace
-
   - name: Clone Mininet
     git: repo=https://github.com/mininet/mininet.git dest=/home/user/workspace version=aae0affae46a63ef5e54d86351c96417c3888112
 

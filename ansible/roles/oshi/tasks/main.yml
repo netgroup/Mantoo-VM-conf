@@ -20,5 +20,8 @@
   - name: Include Dreamer-Management-Scripts
     include: Dreamer-Management-Scripts.yml
 
+  - name: Include dreamer-ryu
+    include: dreamer-ryu.yml
+
   - name: Include Dreamer-Mininet-Extensions
     include: Dreamer-Mininet-Extensions.yml
