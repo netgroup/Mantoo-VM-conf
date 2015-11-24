@@ -70,13 +70,6 @@
       "script": "scripts/ansible.sh"
     },
     {
-      "type": "ansible-local",
-      "playbook_file": "../ansible/OSHI-VM.yml",
-      "role_paths": [
-        "../ansible/roles/oshi"
-      ]
-    },
-    {
       "type": "file",
       "source": "../ansible",
       "destination": "/home/user"
