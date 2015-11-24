@@ -1,5 +1,5 @@
 ---
-  - name: Clone Dreamer-Mininet-Extensions repo
+  - name: Clone Dreamer-Mininet-Extensions
     git: repo=https://github.com/netgroup/Dreamer-Mininet-Extensions.git dest=/home/user/workspace
 
   - name: Install netaddr (pip)
@@ -11,11 +11,17 @@
   - name: Install networkx (pip)
     apt: name=networkx
 
-  - name: Clone Dreamer-Management-Scripts repo
+  - name: Clone Dreamer-Management-Scripts
     git: repo=https://github.com/netgroup/Dreamer-Management-Scripts.git dest=/home/user/workspace
 
   - name: Setup Open vSwitch
     script: /home/user/workspace/Dreamer-Management-Scripts/oshi/setup.sh
 
-  - name: Clone dreamer-ryu repo
+  - name: Clone dreamer-ryu
     git: repo=https://github.com/netgroup/dreamer-ryu.git dest=/home/user/workspace
+
+  - name: Clone Mininet
+    git: repo=https://github.com/mininet/mininet.git dest=/home/user/workspace version=aae0affae46a63ef5e54d86351c96417c3888112
+
+  - name: Install Mininet
+    script: /home/user/workspace/mininet/util/install.sh -ent
