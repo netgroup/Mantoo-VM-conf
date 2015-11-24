@@ -23,6 +23,9 @@
   - name: Include dreamer-ryu
     include: dreamer-ryu.yml
 
+  - name: Include Mininet
+    include: Mininet.yml
+
   - name: Include Dreamer-Topology-Parser
     include: Dreamer-Topology-Parser.yml
 
