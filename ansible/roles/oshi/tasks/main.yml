@@ -46,3 +46,6 @@
 
   - name: Include Dreamer-Testbed-Deployer
     include: Dreamer-Testbed-Deployer.yml
+
+  - name: Include SDN-TE-SR-tools
+    include: SDN-TE-SR-tools.yml
