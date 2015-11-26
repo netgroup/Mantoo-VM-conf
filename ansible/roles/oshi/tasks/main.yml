@@ -17,6 +17,9 @@
   - name: Create workspace directory
     file: path=/home/user/workspace state=directory mode=0755
 
+  - name: Include floodlight
+    include: floodlight.yml
+
   - name: Include Dreamer-Management-Scripts
     include: Dreamer-Management-Scripts.yml
 
