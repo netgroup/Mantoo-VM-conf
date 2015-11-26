@@ -52,3 +52,6 @@
 
   - name: Include Dreamer-Experiment-Handler
     include: Dreamer-Experiment-Handler.yml
+
+  - name: Include Dreamer-Topology3D
+    include: Dreamer-Topology3D.yml
