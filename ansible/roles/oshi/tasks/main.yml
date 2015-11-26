@@ -43,3 +43,6 @@
 
   - name: Include Dreamer-Topology-and-Service-Validator
     include: Dreamer-Topology-and-Service-Validator.yml
+
+  - name: Include Dreamer-Testbed-Deployer
+    include: Dreamer-Testbed-Deployer.yml
