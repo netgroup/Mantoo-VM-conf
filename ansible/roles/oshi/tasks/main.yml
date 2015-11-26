@@ -20,6 +20,9 @@
   - name: Include floodlight
     include: floodlight.yml
 
+  - name: Include Mantoo-scripts-and-readme
+    include: Mantoo-scripts-and-readme.yml
+
   - name: Include Dreamer-Management-Scripts
     include: Dreamer-Management-Scripts.yml
 

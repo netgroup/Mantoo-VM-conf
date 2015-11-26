@@ -1,0 +1,3 @@
+---
+  - name: Clone Mantoo-scripts-and-readme
+    git: repo=https://github.com/netgroup/Mantoo-scripts-and-readme.git dest=/home/user/workspace
