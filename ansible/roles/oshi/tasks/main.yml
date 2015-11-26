@@ -58,3 +58,6 @@
 
   - name: Include OSHI-monitoring
     include: OSHI-monitoring.yml
+
+  - name: Include OSHI-REST-server
+    include: OSHI-REST-server.yml

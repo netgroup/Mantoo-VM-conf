@@ -1,0 +1,21 @@
+---
+  - name: Clone OSHI-REST-server
+    git: repo=https://github.com/netgroup/OSHI-REST-server.git dest=/home/user/workspace
+
+  - name: install required packages (apt)
+    action: apt pkg={{ item }} state=installed
+    with_items:
+      - rrdtool
+      - librrds-perl
+      - librrd-dev
+
+  - name: Install rrdtool (pip)
+    pip: name={{ item }}
+    with_items:
+      - rrdtool
+      - Django
+      - djangorestframework
+      - markdown
+      - django-filter
+      - pyrrd
+      - django-rest-swagger
