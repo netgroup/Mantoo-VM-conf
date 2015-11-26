@@ -37,3 +37,6 @@
 
   - name: Include Dreamer-Mininet-Extensions
     include: Dreamer-Mininet-Extensions.yml
+
+  - name: Include Dreamer-Measurements-Tools
+    include: Dreamer-Measurements-Tools.yml
