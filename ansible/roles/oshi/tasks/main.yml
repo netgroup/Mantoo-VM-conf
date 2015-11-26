@@ -40,3 +40,6 @@
 
   - name: Include Dreamer-Measurements-Tools
     include: Dreamer-Measurements-Tools.yml
+
+  - name: Include Dreamer-Topology-and-Service-Validator
+    include: Dreamer-Topology-and-Service-Validator.yml
