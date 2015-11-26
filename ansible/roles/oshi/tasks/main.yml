@@ -13,6 +13,7 @@
       - traceroute
       - zerofree
       - python-pip
+      - nano
 
   - name: Create workspace directory
     file: path=/home/user/workspace state=directory mode=0755
