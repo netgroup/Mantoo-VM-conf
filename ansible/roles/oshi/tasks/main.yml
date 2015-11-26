@@ -49,3 +49,6 @@
 
   - name: Include SDN-TE-SR-tools
     include: SDN-TE-SR-tools.yml
+
+  - name: Include Dreamer-Experiment-Handler
+    include: Dreamer-Experiment-Handler.yml
