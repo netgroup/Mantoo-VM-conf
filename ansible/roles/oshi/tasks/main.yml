@@ -55,3 +55,6 @@
 
   - name: Include Dreamer-Topology3D
     include: Dreamer-Topology3D.yml
+
+  - name: Include OSHI-monitoring
+    include: OSHI-monitoring.yml
