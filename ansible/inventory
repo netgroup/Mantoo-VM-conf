@@ -1,0 +1,2 @@
+[targets]
+localhost    ansible_connection=local    ansible_become=true    ansible_become_user=user    ansible_become_pass=user
