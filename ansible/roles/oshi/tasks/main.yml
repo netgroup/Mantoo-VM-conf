@@ -1,11 +1,14 @@
 ---
   - name: Update apt-get cache (apt-get update)
+    become: true
     apt: update_cache=yes
 
   - name: Upgrade packages (full upgrade)
+    become: true
     apt: upgrade=dist
 
   - name: install required packages (apt)
+    become: true
     action: apt pkg={{ item }} state=installed
     with_items:
       - python
