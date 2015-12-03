@@ -9,4 +9,4 @@
     pip: name=ipaddress
 
   - name: Install networkx (pip)
-    apt: name=networkx
+    pip: name=networkx
