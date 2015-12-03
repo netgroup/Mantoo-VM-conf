@@ -3,6 +3,7 @@
     git: repo=https://github.com/netgroup/OSHI-monitoring.git dest=/home/user/workspace/OSHI-monitoring
 
   - name: install required packages (apt)
+    become: true
     action: apt pkg={{ item }} state=installed
     with_items:
       - rrdtool
