@@ -1,6 +1,6 @@
 ---
   - name: Clone Dreamer-Testbed-Deployer
-    git: repo=https://github.com/netgroup/Dreamer-Testbed-Deployer.git dest=/home/user/workspace
+    git: repo=https://github.com/netgroup/Dreamer-Testbed-Deployer.git dest=/home/user/workspace/Dreamer-Testbed-Deployer
 
   - name: Install netaddr (pip)
     pip: name=netaddr

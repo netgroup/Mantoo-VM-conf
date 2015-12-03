@@ -17,6 +17,7 @@
       - zerofree
       - python-pip
       - nano
+      - git
 
   - name: Create workspace directory
     file: path=/home/user/workspace state=directory mode=0755

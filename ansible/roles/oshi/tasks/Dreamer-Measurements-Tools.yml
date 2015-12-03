@@ -1,6 +1,6 @@
 ---
   - name: Clone Dreamer-Measurements-Tools
-    git: repo=https://github.com/netgroup/Dreamer-Measurements-Tools.git dest=/home/user/workspace
+    git: repo=https://github.com/netgroup/Dreamer-Measurements-Tools.git dest=/home/user/workspace/Dreamer-Measurements-Tools
 
   - name: Install paramiko (pip)
     pip: name=paramiko

@@ -1,3 +1,3 @@
 ---
   - name: Clone Dreamer-Experiment-Handler
-    git: repo=https://github.com/netgroup/Dreamer-Experiment-Handler.git dest=/home/user/workspace
+    git: repo=https://github.com/netgroup/Dreamer-Experiment-Handler.git dest=/home/user/workspace/Dreamer-Experiment-Handler
