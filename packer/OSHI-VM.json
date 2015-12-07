@@ -50,7 +50,7 @@
     "iso_checksum_type": "{{ user `iso_checksum_type` }}",
     "iso_checksum": "{{ user `iso_checksum` }}",
     "iso_url": "{{ user `iso_url` }}",
-    "output_directory": "output-{{ user `vm_name` }}-virtualbox-iso",
+    "output_directory": "output-virtualbox",
     "shutdown_command": "echo '{{ user `ssh_password` }}'|sudo -S shutdown -P now",
     "ssh_password": "{{ user `ssh_password`}}",
     "ssh_username": "{{ user `ssh_username`}}",
@@ -73,6 +73,13 @@
       "type": "file",
       "source": "../ansible",
       "destination": "/home/user"
+    }
+  ],
+  "post-processors": [
+    {
+      "keep_input_artifact": true,
+      "output": "output-vagrant/{{ user `vm_name` }}.box",
+      "type": "vagrant"
     }
   ]
 }
