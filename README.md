@@ -37,3 +37,6 @@ While developing Ansible roles, it's useful to run the whole playbook as describ
 Packer will produce two artifacts:
 1. A VirtualBox VM (in the `output-virtualbox` directory)
 2. A [Vagrant](https://www.vagrantup.com/) box (in the `output-vagrant` directory)
+
+## Accessing the VM
+Run one of the output artifacts above and use SSH as `user` (password: `user`) to login to the VM.
