@@ -1,11 +1,11 @@
 {
   "variables": {
-    "alias": "willy",
+    "alias": "oshi",
     "cpu": "1",
     "disk_size": "40960",
     "distro": "ubuntu",
     "headless": "false",
-    "hostname": "oshi-vm",
+    "hostname": "oshi",
     "iso_checksum": "fb4eef05edcabfc5cccd4cb44f3f9b48",
     "iso_checksum_type": "md5",
     "iso_url": "http://releases.ubuntu.com/15.10/ubuntu-15.10-server-amd64.iso",
@@ -15,7 +15,7 @@
     "ssh_password": "user",
     "ssh_username": "user",
     "ssh_wait_timeout": "1h",
-    "vm_name": "ubuntu-15.10-server-amd64"
+    "vm_name": "oshi"
   },
   "builders": [{
     "boot_command": [
@@ -50,7 +50,7 @@
     "iso_checksum_type": "{{ user `iso_checksum_type` }}",
     "iso_checksum": "{{ user `iso_checksum` }}",
     "iso_url": "{{ user `iso_url` }}",
-    "output_directory": "output-virtualbox",
+    "output_directory": "../output/output-virtualbox",
     "shutdown_command": "echo '{{ user `ssh_password` }}'|sudo -S shutdown -P now",
     "ssh_password": "{{ user `ssh_password`}}",
     "ssh_username": "{{ user `ssh_username`}}",
@@ -78,7 +78,7 @@
   "post-processors": [
     {
       "keep_input_artifact": true,
-      "output": "output-vagrant/{{ user `vm_name` }}.box",
+      "output": "../output/output-vagrant/{{ user `vm_name` }}.box",
       "type": "vagrant"
     }
   ]
