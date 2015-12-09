@@ -25,23 +25,32 @@ After you have installed Packer, just run: `packer build packer/OSHI-VM.json`
 The current Packer template (`packer/OSHI-VM.json`) is configured to execute the following provisioning steps:
 1. Install Ansible (via a shell script)
 2. Copy the contents of the `ansible` directory to `/home/user/ansible` on the VM
+3. Provision the VM following `ansible/OSHI-VM.yml` playbook
 
-To run Ansible playbooks just start the VM and run the playbook that has been copied during the provisioning phase. From `/home/user/ansible` directory on the VM run:
+### A note about manual provisioning
+Packer is configured to automatically provision the VM with Ansible.
+
+The playbooks, roles and vars files are available in `/home/user/ansible` if you want to repeat the provisioning process manually. This may be needed if you want to update packages or pull the latest code from GitHub, for example.
+
+To manually run Ansible playbooks just start the VM and run the playbook that has been copied during the provisioning phase. From `/home/user/ansible` directory on the VM run:
 `ansible-playbook -i inventory OSHI-VM.yml`
 
-### A note about automatic provisioning
-Packer can be configured to automatically run Ansible as provisioner. This feature will be enabled when our playbooks will be more stable.
-
 ### Developing Ansible roles
-While developing Ansible roles, it's useful to run the whole playbook as described above, instead of letting Packer automatically run it. This avoids to repeat the whole building process and let developers focus on the provisioning phase.
+While developing Ansible roles, it's useful to first build the artifacts without the new roles so we are sure the process is going to complete successfully.
+Then you can start the development of new roles on the VM and run the whole play locally as described above.
+This avoids to repeat the whole building process just to discover that you put an extra `,` in your, now unparsable, yaml.
 
 ## Output
 Packer will produce two artifacts in the `output` directory:
 1. A VirtualBox VM (in the `output-virtualbox` directory)
 2. A Vagrant box (in the `output-vagrant` directory)
 
-## Accessing the VM
+## Running the VM
 Run one of the output artifacts above and use SSH as `user` (password: `user`) to login to the VM.
 
-### Virtualbox NAT configuration
-If you want to access the Virtualbox VM you may have to configure the NAT accordingly, i.e. to map the SSH port.
+### Vagrant
+The box is not currently hosted on [Atlas](https://atlas.hashicorp.com/boxes/search), so you have to manually install it in your local Vagrant repository by running `vagrant box add netgroup/oshi oshi.box` from the `output/output-vagrant` directory. After this installation, a simple `vagrant up` from the `vagrant` directory will start the VM.
+
+### Virtualbox
+#### Virtualbox NAT configuration
+If you want to access the Virtualbox VM you may have to configure the NAT accordingly, for example to map the SSH port.
