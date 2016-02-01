@@ -1,0 +1,9 @@
+---
+  - name: Clone Dreamer-Topology-and-Service-Validator
+    git: repo=https://github.com/netgroup/Dreamer-Topology-and-Service-Validator.git dest=/home/user/workspace/Dreamer-Topology-and-Service-Validator
+
+  - name: Install django (pip)
+    pip: name=django
+
+  - name: Install networkx (pip)
+    pip: name=networkx

@@ -1,0 +1,12 @@
+---
+  - name: Clone Dreamer-Mininet-Extensions
+    git: repo=https://github.com/netgroup/Dreamer-Mininet-Extensions.git dest=/home/user/workspace/Dreamer-Mininet-Extensions
+
+  - name: Install netaddr (pip)
+    pip: name=netaddr
+
+  - name: Install ipaddress (pip)
+    pip: name=ipaddress
+
+  - name: Install networkx (pip)
+    pip: name=networkx

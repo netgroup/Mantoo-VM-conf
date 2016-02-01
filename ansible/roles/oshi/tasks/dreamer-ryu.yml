@@ -1,0 +1,3 @@
+---
+  - name: Clone dreamer-ryu
+    git: repo=https://github.com/netgroup/dreamer-ryu.git dest=/home/user/workspace/dreamer-ryu

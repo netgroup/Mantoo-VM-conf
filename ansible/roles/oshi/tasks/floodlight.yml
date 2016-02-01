@@ -1,0 +1,3 @@
+---
+  - name: Clone floodlight
+    git: repo=https://github.com/netgroup/floodlight-0.90.git dest=/home/user/workspace/floodlight-0.90

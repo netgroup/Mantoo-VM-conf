@@ -1,7 +1,5 @@
 ---
-  - hosts: 127.0.0.1
-    connection: local
-    become: yes
+  - hosts: all
     gather_facts: yes
     roles:
       - oshi

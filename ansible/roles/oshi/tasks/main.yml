@@ -1,11 +1,14 @@
 ---
   - name: Update apt-get cache (apt-get update)
+    become: true
     apt: update_cache=yes
 
   - name: Upgrade packages (full upgrade)
+    become: true
     apt: upgrade=dist
 
   - name: install required packages (apt)
+    become: true
     action: apt pkg={{ item }} state=installed
     with_items:
       - python
@@ -13,6 +16,54 @@
       - traceroute
       - zerofree
       - python-pip
+      - nano
+      - git
+      - python-dev
 
   - name: Create workspace directory
     file: path=/home/user/workspace state=directory mode=0755
+
+  - name: Include floodlight
+    include: floodlight.yml
+
+  - name: Include Mantoo-scripts-and-readme
+    include: Mantoo-scripts-and-readme.yml
+
+  - name: Include Dreamer-Management-Scripts
+    include: Dreamer-Management-Scripts.yml
+
+  - name: Include dreamer-ryu
+    include: dreamer-ryu.yml
+
+  - name: Include Mininet
+    include: Mininet.yml
+
+  - name: Include Dreamer-Topology-Parser
+    include: Dreamer-Topology-Parser.yml
+
+  - name: Include Dreamer-Mininet-Extensions
+    include: Dreamer-Mininet-Extensions.yml
+
+  - name: Include Dreamer-Measurements-Tools
+    include: Dreamer-Measurements-Tools.yml
+
+  - name: Include Dreamer-Topology-and-Service-Validator
+    include: Dreamer-Topology-and-Service-Validator.yml
+
+  - name: Include Dreamer-Testbed-Deployer
+    include: Dreamer-Testbed-Deployer.yml
+
+  - name: Include SDN-TE-SR-tools
+    include: SDN-TE-SR-tools.yml
+
+  - name: Include Dreamer-Experiment-Handler
+    include: Dreamer-Experiment-Handler.yml
+
+  - name: Include Dreamer-Topology3D
+    include: Dreamer-Topology3D.yml
+
+  - name: Include OSHI-monitoring
+    include: OSHI-monitoring.yml
+
+  - name: Include OSHI-REST-server
+    include: OSHI-REST-server.yml
