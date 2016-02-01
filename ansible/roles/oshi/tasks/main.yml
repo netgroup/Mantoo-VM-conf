@@ -20,6 +20,10 @@
       - git
       - python-dev
 
+  - name: Install roles from Ansible Galaxy
+    become: true
+    local_action: command ansible-galaxy install -r requirements.yml --ignore-errors
+      
   - name: Create workspace directory
     file: path=/home/user/workspace state=directory mode=0755
 

@@ -1,0 +1,5 @@
+# Install a role from the Ansible Galaxy
+- src: ansiblebit.oracle-java
+- src: azavea.elasticsearch
+- src: azavea.logstash
+- src: azavea.kibana

@@ -3,3 +3,7 @@
     gather_facts: yes
     roles:
       - oshi
+      - ansiblebit.oracle-java
+      - azavea.elasticsearch
+      - azavea.logstash
+      - azavea.kibana
