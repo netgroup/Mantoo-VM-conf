@@ -1,0 +1,7 @@
+---
+  - hosts: all
+    gather_facts: yes
+    tasks:
+      - name: Install roles from Ansible Galaxy
+        become: true
+        local_action: command ansible-galaxy install -r requirements.yml --ignore-errors

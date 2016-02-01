@@ -1,6 +1,10 @@
 ---
   - hosts: all
     gather_facts: yes
+    pre_tasks:
+      - name: Upgrade apt packages
+        become: true
+        apt: upgrade=dist update_cache=yes cache_valid_time=300
     roles:
       - oshi
       - ansiblebit.oracle-java

@@ -78,6 +78,12 @@
       "type": "ansible-local",
       "inventory_file": "../ansible/inventory",
       "playbook_dir": "../ansible",
+      "playbook_file": "../ansible/install_ansible_roles.yml"
+    },
+    {
+      "type": "ansible-local",
+      "inventory_file": "../ansible/inventory",
+      "playbook_dir": "../ansible",
       "playbook_file": "../ansible/OSHI-VM.yml"
     }
   ],

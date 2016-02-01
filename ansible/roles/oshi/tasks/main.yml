@@ -1,12 +1,4 @@
 ---
-  - name: Update apt-get cache (apt-get update)
-    become: true
-    apt: update_cache=yes
-
-  - name: Upgrade packages (full upgrade)
-    become: true
-    apt: upgrade=dist
-
   - name: install required packages (apt)
     become: true
     action: apt pkg={{ item }} state=installed
@@ -19,10 +11,6 @@
       - nano
       - git
       - python-dev
-
-  - name: Install roles from Ansible Galaxy
-    become: true
-    local_action: command ansible-galaxy install -r requirements.yml --ignore-errors
       
   - name: Create workspace directory
     file: path=/home/user/workspace state=directory mode=0755
