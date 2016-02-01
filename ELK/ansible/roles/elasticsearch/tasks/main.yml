@@ -1,0 +1,22 @@
+---
+  - name: Add ElasticSearch apt key
+    become: true
+    apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+	
+  - name: Add ElasticSearch to apt sources list
+    become: true
+    apt_repository: repo='deb http://packages.elastic.co/elasticsearch/2.x/debian stable main' state=present
+	
+  - name: Update apt-get cache (apt-get update)
+    become: true
+    apt: update_cache=yes
+
+  - name: Install required packages (apt)
+    become: true
+    action: apt pkg={{ item }} state=installed
+    with_items:
+      - elasticsearch
+
+  - name: Upgrade packages (full upgrade)
+    become: true
+    service: name=elasticsearch enabled=yes
