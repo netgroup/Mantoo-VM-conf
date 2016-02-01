@@ -21,7 +21,7 @@ This project has the following components:
 3. A [Vagrantfile](https://www.vagrantup.com/) (in the `vagrant` directory)
 
 ## Building the VM
-After you have installed Packer, just run: `packer build packer/OSHI-VM.json`
+After you have installed Packer, just run: `packer build OSHI-VM.json` from the `packer` directory.
 
 ## Provisioning the VM
 The current Packer template (`packer/OSHI-VM.json`) is configured to execute the following provisioning steps:
