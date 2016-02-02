@@ -32,6 +32,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
   end
 
-  config.ssh.username "user"
+  config.ssh.username="user"
 
 end
