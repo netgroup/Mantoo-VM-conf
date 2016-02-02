@@ -3,10 +3,6 @@ Setup a Mantoo VM from scratch, installing all packages and tools
 The VM is first built with [Packer](https://www.packer.io/) and then provisioned
 with shell scripts and via [Ansible](http://www.ansible.com/).
 
-The whole building process should take about:
-* 10 minutes for OS installation
-* 5 minutes to install Ansible
-
 ## Requirements
 The only requirements are a working installation of:
 
