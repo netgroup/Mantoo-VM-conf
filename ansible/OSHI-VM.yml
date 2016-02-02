@@ -3,11 +3,11 @@
     gather_facts: yes
     pre_tasks:
       - name: Upgrade apt packages
-        become: true
+        become: yes
         apt: upgrade=dist update_cache=yes cache_valid_time=300
     roles:
       - oshi
-      - ansiblebit.oracle-java
-      - azavea.elasticsearch
-      - azavea.logstash
-      - azavea.kibana
+      - { role: geerlingguy.elasticsearch, become: yes, java_packages: ['openjdk-8-jdk'] }
+      - { role: geerlingguy.logstash, become: yes, logstash_monitor_local_syslog: false }
+      - { role: geerlingguy.nginx, become: yes }
+      - { role: geerlingguy.kibana, become: yes }
