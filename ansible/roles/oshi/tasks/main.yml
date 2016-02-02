@@ -1,4 +1,14 @@
 ---
+  - name: Ensure user exists
+    become: true
+    user: name=user
+          home=/home/user
+          state=present
+
+  - name: Install Vagrant insecure keypair
+    become: true
+    authorized_key: user=user key=https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub
+
   - name: install required packages (apt)
     become: true
     action: apt pkg={{ item }} state=installed
