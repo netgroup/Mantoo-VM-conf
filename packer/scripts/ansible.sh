@@ -1,6 +1,7 @@
 #!/bin/bash
 
-apt-get -y install software-properties-common
-add-apt-repository ppa:ansible/ansible
-apt-get update
-apt-get -y install ansible
+# Install Ansible from source
+cd /home/user/workspace
+git clone git://github.com/ansible/ansible.git --recursive
+cd ./ansible
+source ./hacking/env-setup
