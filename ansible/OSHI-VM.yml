@@ -2,6 +2,9 @@
   - hosts: all
     gather_facts: yes
     pre_tasks:
+      - name: Update apt cache if repository just added.
+        become: yes
+        apt: update_cache=yes
       - name: Upgrade apt packages
         become: yes
         apt: upgrade=dist update_cache=yes cache_valid_time=300
@@ -9,6 +12,6 @@
       - oshi
       - { role: geerlingguy.java, become: yes, java_packages: ['openjdk-8-jdk'] }
       - { role: elasticsearch, become: yes }
-      - { role: geerlingguy.logstash, become: yes, logstash_monitor_local_syslog: false }
+      - { role: logstash, become: yes }
       - { role: geerlingguy.nginx, become: yes }
       - { role: geerlingguy.kibana, become: yes }
