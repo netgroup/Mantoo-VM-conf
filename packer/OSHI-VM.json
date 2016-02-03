@@ -72,11 +72,6 @@
       "script": "scripts/ansible.sh"
     },
     {
-      "type": "file",
-      "source": "../ansible",
-      "destination": "/home/user"
-    },
-    {
       "type": "ansible-local",
       "inventory_file": "../ansible/inventory",
       "playbook_dir": "../ansible",
