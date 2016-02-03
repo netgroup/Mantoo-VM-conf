@@ -2,12 +2,11 @@
   - hosts: all
     gather_facts: yes
     pre_tasks:
-      - name: Update apt cache if repository just added.
-        become: yes
-        apt: update_cache=yes
       - name: Upgrade apt packages
         become: yes
         apt: upgrade=dist update_cache=yes cache_valid_time=300
+      - name: Clone Mantoo-VM-conf
+        git: repo=https://github.com/netgroup/Mantoo-VM-conf.git dest=/home/user/workspace/Mantoo-VM-conf
     roles:
       - oshi
       - { role: geerlingguy.java, become: yes, java_packages: ['openjdk-8-jdk'] }
