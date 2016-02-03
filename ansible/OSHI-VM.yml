@@ -13,5 +13,5 @@
       - { role: geerlingguy.java, become: yes, java_packages: ['openjdk-8-jdk'] }
       - { role: elasticsearch, become: yes }
       - { role: logstash, become: yes }
-      - { role: geerlingguy.nginx, become: yes }
-      - { role: geerlingguy.kibana, become: yes }
+      - { role: nginx, become: yes }
+      - { role: kibana, become: yes }

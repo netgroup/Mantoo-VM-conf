@@ -1,4 +1,2 @@
 # Install roles from the Ansible Galaxy
 - src: geerlingguy.java
-- src: geerlingguy.kibana
-- src: geerlingguy.nginx
