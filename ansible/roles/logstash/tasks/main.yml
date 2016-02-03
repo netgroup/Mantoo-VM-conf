@@ -59,8 +59,8 @@
     dest: "{{ logstash_ssl_dir }}/{{ item | basename }}"
     mode: 0644
   with_items:
-    - "files/{{ logstash_ssl_key_file }}"
-    - "files/{{ logstash_ssl_certificate_file }}"
+    - "{{ logstash_ssl_key_file }}"
+    - "{{ logstash_ssl_certificate_file }}"
   notify: restart logstash
 
 - name: Ensure Logstash is started and enabled on boot.
