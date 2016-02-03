@@ -1,6 +1,6 @@
 ---
 - name: Add Kibana repository (cannot use the apt_repository task according to docs)
-  command: echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | sudo tee -a /etc/apt/sources.list
+  lineinfile: dest=/etc/apt/sources.list line="deb http://packages.elastic.co/kibana/4.4/debian stable main"
 
 - name: Update apt cache if repository just added.
   apt: update_cache=yes
