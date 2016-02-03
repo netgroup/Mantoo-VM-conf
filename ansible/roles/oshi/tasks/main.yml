@@ -17,6 +17,7 @@
       - nano
       - git
       - python-dev
+      - sshpass
       
   - name: Create workspace directory
     file: path=/home/user/workspace state=directory mode=0755
