@@ -1,0 +1,67 @@
+---
+- name: Add Elasticsearch apt key.
+  apt_key:
+    url: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+    state: present
+
+- name: Add Logstash repository.
+  apt_repository:
+    repo: 'deb http://packages.elasticsearch.org/logstash/2.2/debian stable main'
+    state: present
+
+- name: Check if Logstash is already installed.
+  stat: path=/etc/init.d/logstash
+  register: logstash_installed
+
+- name: Update apt cache if repository just added.
+  apt: update_cache=yes
+  when: logstash_installed.stat.exists == false
+
+- name: Install Logstash.
+  apt: pkg=logstash state=present
+
+- name: Add Logstash user to adm group (Debian).
+  user:
+    name: logstash
+    group: logstash
+    groups: adm
+  when: ansible_os_family == "Debian"
+  notify: restart logstash
+
+- name: Create Logstash configuration files.
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/logstash/conf.d/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - 01-lumberjack-input.conf
+    - 30-elasticsearch-output.conf
+  notify: restart logstash
+
+- name: Warn user if using insecure SSL key pair.
+  debug:
+    msg: >
+      ***SECURITY RISK***: You are currently using the included/default SSL key
+      pair. Please generate your own secure key pair if using this playbook for
+      any kind of production purposes!
+  when: "logstash_ssl_certificate_file.find('-example.crt') != -1"
+
+- name: Ensure Logstash SSL key pair directory exists.
+  file:
+    path: "{{ logstash_ssl_dir }}"
+    state: directory
+
+- name: Copy SSL key and cert for logstash-forwarder.
+  copy:
+    src: "{{ item }}"
+    dest: "{{ logstash_ssl_dir }}/{{ item | basename }}"
+    mode: 0644
+  with_items:
+    - "{{ logstash_ssl_key_file }}"
+    - "{{ logstash_ssl_certificate_file }}"
+  notify: restart logstash
+
+- name: Ensure Logstash is started and enabled on boot.
+  service: "name=logstash state=started enabled={{ logstash_enabled_on_boot }}"

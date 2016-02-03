@@ -7,7 +7,8 @@
         apt: upgrade=dist update_cache=yes cache_valid_time=300
     roles:
       - oshi
-      - { role: geerlingguy.elasticsearch, become: yes, java_packages: ['openjdk-8-jdk'] }
+      - { role: geerlingguy.java, become: yes, java_packages: ['openjdk-8-jdk'] }
+      - { role: elasticsearch, become: yes }
       - { role: geerlingguy.logstash, become: yes, logstash_monitor_local_syslog: false }
       - { role: geerlingguy.nginx, become: yes }
       - { role: geerlingguy.kibana, become: yes }
