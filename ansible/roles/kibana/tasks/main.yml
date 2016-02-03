@@ -10,7 +10,7 @@
 - name: Download Kibana.
   get_url:
     url: "https://download.elastic.co/kibana/kibana/kibana-4.4.0-linux-x64.tar.gz"
-    dest: "{{ workspace }}/kibana-{{ kibana_version }}.tar.gz"
+    dest: "{{ workspace }}/kibana-4.4.0-linux-x64.tar.gz"
 
 - name: Expand Kibana.
   command: >
