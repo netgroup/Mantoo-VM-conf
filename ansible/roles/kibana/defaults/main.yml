@@ -1,7 +1,7 @@
 ---
 workspace: /root
 
-kibana_root: /var/www/kibana3
+kibana_root: /var/www/kibana4
 kibana_server_name: logs.example.com
 kibana_elasticsearch_port: 80
 
