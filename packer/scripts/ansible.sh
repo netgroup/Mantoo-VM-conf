@@ -13,6 +13,3 @@ source ./hacking/env-setup
 # Put Ansible in PATH
 echo "export PATH=/opt/ansible/bin:$PATH" >> /etc/profile.d/ansible.sh
 chmod +x /etc/profile.d/ansible.sh
-
-# Reboot to refresh PATH changes
-reboot

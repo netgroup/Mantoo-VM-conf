@@ -2,7 +2,7 @@
   "_comment": "version 1.1.0",
   "variables": {
     "alias": "oshi",
-    "cpu": "1",
+    "cpu": "2",
     "disk_size": "40960",
     "distro": "ubuntu",
     "headless": "false",
@@ -16,7 +16,8 @@
     "ssh_password": "user",
     "ssh_username": "user",
     "ssh_wait_timeout": "1h",
-    "vm_name": "oshi"
+    "vm_name": "oshi",
+    "vram": "10"
   },
   "builders": [{
     "boot_command": [
@@ -60,7 +61,8 @@
     "type": "virtualbox-iso",
     "vboxmanage": [
       ["modifyvm", "{{.Name}}", "--memory", "{{ user `memory`}}"],
-      ["modifyvm", "{{.Name}}", "--cpus", "{{ user `cpu`}}"]
+      ["modifyvm", "{{.Name}}", "--cpus", "{{ user `cpu`}}"],
+      ["modifyvm", "{{.Name}}", "--vram", "{{ user `vram` }}"]
     ],
     "virtualbox_version_file": ".vbox_version",
     "vm_name": "{{ user `vm_name`}}"
@@ -70,6 +72,11 @@
       "type": "shell",
       "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
       "script": "scripts/ansible.sh"
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "script": "scripts/reboot.sh"
     },
     {
       "type": "ansible-local",
