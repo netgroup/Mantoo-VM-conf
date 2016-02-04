@@ -1,4 +1,7 @@
-#!/bin/bash -x
+#!/bin/bash
+
+# Enable script output
+set -x
 
 # Install required packages
 apt-get -y install git python-pip python-dev build-essential
