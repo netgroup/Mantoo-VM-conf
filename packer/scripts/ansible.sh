@@ -18,7 +18,6 @@ echo "export PATH=/opt/ansible/bin:$PATH" >> /etc/profile.d/ansible.sh
 chmod +x /etc/profile.d/ansible.sh
 
 # Reboot to refresh PATH changes
-reboot
-
 # See "Handling Reboots" section in https://www.packer.io/docs/provisioners/shell.html
+reboot
 sleep 60
