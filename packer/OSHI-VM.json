@@ -2,7 +2,7 @@
   "_comment": "version 1.1.0",
   "variables": {
     "alias": "oshi",
-    "cpu": "2",
+    "cpu": "4",
     "disk_size": "40960",
     "distro": "ubuntu",
     "headless": "false",
@@ -72,11 +72,6 @@
       "type": "shell",
       "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
       "script": "scripts/ansible.sh"
-    },
-    {
-      "type": "shell",
-      "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
-      "script": "scripts/reboot.sh"
     },
     {
       "type": "ansible-local",
