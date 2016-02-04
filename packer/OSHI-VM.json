@@ -76,6 +76,7 @@
     {
       "type": "ansible-local",
       "inventory_file": "../ansible/inventory",
+      "pause_before": "1m",
       "playbook_dir": "../ansible",
       "playbook_file": "../ansible/install_ansible_roles.yml"
     },
