@@ -1,0 +1,9 @@
+---
+  - name: install required packages (apt)
+    become: true
+    action: apt pkg={{ item }} state=installed
+    with_items:
+      - gcc
+      - build-essential
+      - linux-header-server
+
