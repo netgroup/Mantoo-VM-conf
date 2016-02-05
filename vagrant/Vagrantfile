@@ -33,6 +33,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["modifyvm", :id, "--cpus", cpus]
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+    # 10 MB is the minimum to enable Virtualbox seamless mode
+    v.customize ["modifyvm", ":id,"--vram", "10"]
   end
 
   config.ssh.username="user"
