@@ -1,12 +1,10 @@
 ---
   - name: Ensure user exists
-    become: true
     user: name=user
           home=/home/user
           state=present
 
   - name: install required packages (apt)
-    become: true
     action: apt pkg={{ item }} state=installed
     with_items:
       - python
@@ -22,23 +20,22 @@
   - name: Create workspace directory
     file: path=/home/user/workspace state=directory mode=0755
 
-  - name: Include floodlight
-    include: floodlight.yml
-
-  - name: Include Mantoo-scripts-and-readme
-    include: Mantoo-scripts-and-readme.yml
-
+  - name: Clone REPOs
+    git: repo={{ item.url }} dest={{ item.destination }}
+    with_items:
+      - { url: 'https://github.com/floodlight/floodlight.git', destination: '/home/user/workspace/floodlight-0.90' }
+      - { url: 'https://github.com/netgroup/Mantoo-scripts-and-readme.git', destination: '/home/user/workspace/Mantoo-scripts-and-readme' }
+      - { url: 'https://github.com/netgroup/dreamer-ryu.git', destination: '/home/user/workspace/dreamer-ryu' }
+      - { url: 'https://github.com/netgroup/Dreamer-Topology-Parser.git', destination: '/home/user/workspace/Dreamer-Topology-Parser' }
+      - { url: 'https://github.com/netgroup/SDN-TE-SR-tools.git', destination: '/home/user/workspace/SDN-TE-SR-tools' }
+      - { url: 'https://github.com/netgroup/Dreamer-Experiment-Handler.git', destination: '/home/user/workspace/Dreamer-Experiment-Handler' }
+      - { url: 'https://github.com/netgroup/Dreamer-Topology3D.git', destination'/home/user/workspace/Dreamer-Topology3D' }
+      
   - name: Include Dreamer-Management-Scripts
     include: Dreamer-Management-Scripts.yml
 
-  - name: Include dreamer-ryu
-    include: dreamer-ryu.yml
-
   - name: Include Mininet
     include: Mininet.yml
-
-  - name: Include Dreamer-Topology-Parser
-    include: Dreamer-Topology-Parser.yml
 
   - name: Include Dreamer-Mininet-Extensions
     include: Dreamer-Mininet-Extensions.yml
@@ -51,15 +48,6 @@
 
   - name: Include Dreamer-Testbed-Deployer
     include: Dreamer-Testbed-Deployer.yml
-
-  - name: Include SDN-TE-SR-tools
-    include: SDN-TE-SR-tools.yml
-
-  - name: Include Dreamer-Experiment-Handler
-    include: Dreamer-Experiment-Handler.yml
-
-  - name: Include Dreamer-Topology3D
-    include: Dreamer-Topology3D.yml
 
   - name: Include OSHI-monitoring
     include: OSHI-monitoring.yml

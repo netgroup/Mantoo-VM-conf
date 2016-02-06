@@ -1,3 +1,0 @@
----
-  - name: Clone Dreamer-Topology-Parser
-    git: repo=https://github.com/netgroup/Dreamer-Topology-Parser.git dest=/home/user/workspace/Dreamer-Topology-Parser

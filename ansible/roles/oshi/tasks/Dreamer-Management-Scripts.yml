@@ -3,5 +3,4 @@
     git: repo=https://github.com/netgroup/Dreamer-Management-Scripts.git dest=/home/user/workspace/Dreamer-Management-Scripts
 
   - name: Setup Open vSwitch
-    become: true
     script: /home/user/workspace/Dreamer-Management-Scripts/oshi/setup.sh creates=/etc/setup

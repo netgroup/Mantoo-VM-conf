@@ -6,4 +6,42 @@
       - gcc
       - build-essential
       - linux-header-server
-
+  - name: Set ISO path
+    set_fact: ISO_path="/home/user/VBoxGuestAdditions.iso"
+  - name: Check if VBoxGuest additions ISO is mounted
+    shell: mount -l 2>/dev/null|awk '/VBOXADDITIONS/{print $3}'
+    register: mount_path
+    changed_when: mount_path is defined and mount_path.stdout != ""
+  - name: Mount VBoxGuestAdditions
+    mount:
+      name=/media/cdrom
+      src={{ ISO_path }}
+      fstype=iso9660
+      opts=noauto
+      state=mounted
+    register: mounted_ISO
+    when: ((mount_path is defined) and ("{{ mount_path.stdout }}" == "")))
+  - name: Check if VBoxGuest additions ISO is mounted
+    shell: mount -l 2>/dev/null|awk '/VBOXADDITIONS/{print $3}'
+    register: mount_path
+  - name: Build and install VBoxGuestAdditions from file
+    shell: /media/cdrom/VBoxLinuxAdditions.run --nox11 1>/dev/null
+    ignore_errors: yes
+  - name: Unmount VBoxGuestAdditions
+    mount:
+      name={{ mount_path.stdout }}
+      src={{ ISO_path }}
+      fstype=iso9660
+      state=unmounted
+    when: mounted_ISO | changed
+  - name: Remove build logfiles, artefacts and ISO files
+    file: name={{ item}} follow=yes state=absent
+    with_items:
+      - {{ ISO_path }}
+  - name: Remove cdrom fstab entry
+    lineinfile: >
+      dest=/etc/fstab
+      regexp='^{{ ISO_path }}'
+      line='{{ ISO_path }}	{{ mount_path.stdout }}	iso9660	noauto	0	0'
+      state=absent
+    when: mounted_ISO | changed

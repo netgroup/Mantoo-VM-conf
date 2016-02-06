@@ -1,3 +1,0 @@
----
-  - name: Clone SDN-TE-SR-tools
-    git: repo=https://github.com/netgroup/SDN-TE-SR-tools.git dest=/home/user/workspace/SDN-TE-SR-tools

@@ -3,7 +3,6 @@
     git: repo=https://github.com/netgroup/OSHI-REST-server.git dest=/home/user/workspace/OSHI-REST-server
 
   - name: install required packages (apt)
-    become: true
     action: apt pkg={{ item }} state=installed
     with_items:
       - rrdtool
