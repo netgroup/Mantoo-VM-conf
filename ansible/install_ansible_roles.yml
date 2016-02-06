@@ -4,4 +4,6 @@
     tasks:
       - name: Install roles from Ansible Galaxy
         become: true
-        local_action: command ansible-galaxy install -r /home/user/ansible/requirements.yml --ignore-errors
+        local_action: command ansible-galaxy install {{ role }}
+        with_items:
+          - geerlingguy.java

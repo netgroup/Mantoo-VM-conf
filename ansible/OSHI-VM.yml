@@ -5,6 +5,8 @@
       - name: Upgrade apt packages
         become: yes
         apt: upgrade=dist update_cache=yes cache_valid_time=300
+      - name: Create workspace directory
+        file: path=/home/user/workspace state=directory mode=0755
       - name: Clone Mantoo-VM-conf
         git: repo=https://github.com/netgroup/Mantoo-VM-conf.git dest=/home/user/workspace/Mantoo-VM-conf
     roles:
