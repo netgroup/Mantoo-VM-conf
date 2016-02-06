@@ -4,6 +4,6 @@
     tasks:
       - name: Install roles from Ansible Galaxy
         become: true
-        local_action: command ansible-galaxy install {{ role }}
+        local_action: command ansible-galaxy install {{ item }}
         with_items:
           - geerlingguy.java
