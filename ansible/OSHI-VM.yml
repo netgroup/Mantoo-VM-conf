@@ -13,7 +13,7 @@
       - name: Clone Mantoo-VM-conf
         git: repo=https://github.com/netgroup/Mantoo-VM-conf.git dest=/home/user/workspace/Mantoo-VM-conf
     roles:
-      - virtualbox-guest-additions
+      - { role: virtualbox-guest-additions, become: yes }
       - { role: vagrant, become: yes }
       - { role: oshi, become: yes }
       - { role: geerlingguy.java, become: yes, java_packages: ['openjdk-8-jdk'] }
