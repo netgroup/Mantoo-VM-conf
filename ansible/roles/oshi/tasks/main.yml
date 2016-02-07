@@ -20,16 +20,26 @@
   - name: Create workspace directory
     file: path=/home/user/workspace state=directory mode=0755
 
-  - name: Clone REPOs
-    git: repo={{ item.url }} dest={{ item.destination }}
-    with_items:
-      - { url: 'https://github.com/floodlight/floodlight.git', destination: '/home/user/workspace/floodlight-0.90' }
-      - { url: 'https://github.com/netgroup/Mantoo-scripts-and-readme.git', destination: '/home/user/workspace/Mantoo-scripts-and-readme' }
-      - { url: 'https://github.com/netgroup/dreamer-ryu.git', destination: '/home/user/workspace/dreamer-ryu' }
-      - { url: 'https://github.com/netgroup/Dreamer-Topology-Parser.git', destination: '/home/user/workspace/Dreamer-Topology-Parser' }
-      - { url: 'https://github.com/netgroup/SDN-TE-SR-tools.git', destination: '/home/user/workspace/SDN-TE-SR-tools' }
-      - { url: 'https://github.com/netgroup/Dreamer-Experiment-Handler.git', destination: '/home/user/workspace/Dreamer-Experiment-Handler' }
-      - { url: 'https://github.com/netgroup/Dreamer-Topology3D.git', destination'/home/user/workspace/Dreamer-Topology3D' }
+  - name: Clone Floodlight repo
+    git: repo=https://github.com/floodlight/floodlight.git dest=/home/user/workspace/floodlight
+
+  - name: Clone Mantoo-scripts-and-readme repo
+    git: repo=https://github.com/netgroup/Mantoo-scripts-and-readme.git dest=/home/user/workspace/Mantoo-scripts-and-readme
+
+  - name: Clone dreamer-ryu repo
+    git: repo=https://github.com/netgroup/dreamer-ryu.git dest=/home/user/workspace/dreamer-ryu  
+
+  - name: Clone Dreamer-Topology-Parser repo
+    git: repo=https://github.com/netgroup/Dreamer-Topology-Parser.git dest=/home/user/workspace/Dreamer-Topology-Parser
+
+  - name: Clone SDN-TE-SR-tools repo
+    git: repo=https://github.com/netgroup/SDN-TE-SR-tools.git dest=/home/user/workspace/SDN-TE-SR-tools
+
+  - name: Clone Dreamer-Experiment-Handler repo
+    git: repo=https://github.com/netgroup/Dreamer-Experiment-Handler.git dest=/home/user/workspace/Dreamer-Experiment-Handler
+
+  - name: Clone Dreamer-Topology3D repo
+    git: repo=https://github.com/netgroup/Dreamer-Topology3D.git dest=/home/user/workspace/Dreamer-Topology3D
       
   - name: Include Dreamer-Management-Scripts
     include: Dreamer-Management-Scripts.yml
