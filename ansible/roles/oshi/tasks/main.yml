@@ -20,9 +20,6 @@
   - name: Create workspace directory
     file: path=/home/user/workspace state=directory mode=0755
 
-  - name: Clone Floodlight repo
-    git: repo=https://github.com/floodlight/floodlight.git dest=/home/user/workspace/floodlight
-
   - name: Clone Mantoo-scripts-and-readme repo
     git: repo=https://github.com/netgroup/Mantoo-scripts-and-readme.git dest=/home/user/workspace/Mantoo-scripts-and-readme
 
