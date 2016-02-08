@@ -2,12 +2,14 @@
   - name: Clone OSHI-monitoring
     git: repo=https://github.com/netgroup/OSHI-monitoring.git dest=/home/user/workspace/OSHI-monitoring
 
-  - name: install required packages (apt)
-    action: apt pkg={{ item }} state=installed
-    with_items:
-      - rrdtool
-      - librrds-perl
-      - librrd-dev
+  - name: install rrdtool (apt)
+    action: apt pkg=rrdtool state=installed
+
+  - name: install librrds-perl (apt)
+    action: apt pkg=librrds-perl state=installed
+
+  - name: install librrd-dev (apt)
+    action: apt pkg=librrd-dev state=installed
 
   - name: Install rrdtool (pip)
     pip: name=rrdtool

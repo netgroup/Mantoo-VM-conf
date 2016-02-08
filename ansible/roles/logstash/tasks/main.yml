@@ -30,14 +30,19 @@
 
 - name: Create Logstash configuration files.
   template:
-    src: "{{ item }}.j2"
-    dest: "/etc/logstash/conf.d/{{ item }}"
+    src: "01-lumberjack-input.conf.j2"
+    dest: "/etc/logstash/conf.d/01-lumberjack-input.conf"
     owner: root
     group: root
     mode: 0644
-  with_items:
-    - 01-lumberjack-input.conf
-    - 30-elasticsearch-output.conf
+
+- name: Create Logstash configuration files.
+  template:
+    src: "30-elasticsearch-output.conf.j2"
+    dest: "/etc/logstash/conf.d/30-elasticsearch-output.conf"
+    owner: root
+    group: root
+    mode: 0644
   notify: restart logstash
 
 - name: Warn user if using insecure SSL key pair.
@@ -53,14 +58,17 @@
     path: "{{ logstash_ssl_dir }}"
     state: directory
 
+- name: Copy SSL key for logstash-forwarder.
+  copy:
+    src: "{{ logstash_ssl_key_file }}"
+    dest: "{{ logstash_ssl_dir }}/{{ logstash_ssl_key_file | basename }}"
+    mode: 0644
+
 - name: Copy SSL key and cert for logstash-forwarder.
   copy:
-    src: "{{ item }}"
-    dest: "{{ logstash_ssl_dir }}/{{ item | basename }}"
+    src: "{{ logstash_ssl_certificate_file }}"
+    dest: "{{ logstash_ssl_dir }}/{{ logstash_ssl_certificate_file | basename }}"
     mode: 0644
-  with_items:
-    - "{{ logstash_ssl_key_file }}"
-    - "{{ logstash_ssl_certificate_file }}"
   notify: restart logstash
 
 - name: Ensure Logstash is started and enabled on boot.

@@ -2,20 +2,33 @@
   - name: Clone OSHI-REST-server
     git: repo=https://github.com/netgroup/OSHI-REST-server.git dest=/home/user/workspace/OSHI-REST-server
 
-  - name: install required packages (apt)
-    action: apt pkg={{ item }} state=installed
-    with_items:
-      - rrdtool
-      - librrds-perl
-      - librrd-dev
+  - name: install rrdtool packages (apt)
+    action: apt pkg=rrdtool state=installed
+
+  - name: install librrds-perl packages (apt)
+    action: apt pkg=librrds-perl state=installed
+
+  - name: install librrd-dev packages (apt)
+    action: apt pkg=librrd-dev state=installed
 
   - name: Install rrdtool (pip)
-    pip: name={{ item }}
-    with_items:
-      - rrdtool
-      - Django
-      - djangorestframework
-      - markdown
-      - django-filter
-      - pyrrd
-      - django-rest-swagger
+    pip: name=rrdtool
+
+  - name: Install Django (pip)
+    pip: name=Django
+
+  - name: Install djangorestframework (pip)
+    pip: name=djangorestframework
+
+  - name: Install markdown (pip)
+    pip: name=markdown
+
+  - name: Install django-filter (pip)
+    pip: name=django-filter
+
+  - name: Install pyrrd (pip)
+    pip: name=pyrrd
+
+  - name: Install django-rest-swagger (pip)
+    pip: name=django-rest-swagger
+
