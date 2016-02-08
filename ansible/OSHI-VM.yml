@@ -2,9 +2,6 @@
   - hosts: all
     gather_facts: yes
     pre_tasks:
-      - name: Upgrade apt packages
-        become: yes
-        apt: upgrade=dist update_cache=yes cache_valid_time=300
 
       - name: Create workspace directory
         file: path=/home/user/workspace state=directory mode=0755
