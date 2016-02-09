@@ -24,7 +24,7 @@
     register: mounted_ISO
 
   - name: Build and install VBoxGuestAdditions from file
-    shell: /media/cdrom/VBoxLinuxAdditions.run --nox11 1>/dev/null
+    shell: /media/cdrom/VBoxLinuxAdditions.run
     ignore_errors: yes
 
   - name: Unmount VBoxGuestAdditions
