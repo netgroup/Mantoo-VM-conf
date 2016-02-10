@@ -17,15 +17,15 @@
       - python-dev
       - sshpass
       - lxde
-      
+
   - name: Create workspace directory
     file: path=/home/user/workspace state=directory mode=0755
 
   - name: Clone Mantoo-scripts-and-readme repo
     git: repo=https://github.com/netgroup/Mantoo-scripts-and-readme.git dest=/home/user/workspace/Mantoo-scripts-and-readme
 
-  - name: Clone dreamer-ryu repo
-    git: repo=https://github.com/netgroup/dreamer-ryu.git dest=/home/user/workspace/dreamer-ryu  
+  - name: Include dreamer-ryu
+    include: dreamer-ryu.yml
 
   - name: Clone Dreamer-Topology-Parser repo
     git: repo=https://github.com/netgroup/Dreamer-Topology-Parser.git dest=/home/user/workspace/Dreamer-Topology-Parser
@@ -65,3 +65,4 @@
 
   - name: Set ownership of /home/user to user
     file: path=/home/user recurse=yes owner=user group=user
+
