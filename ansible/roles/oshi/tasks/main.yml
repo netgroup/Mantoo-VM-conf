@@ -16,6 +16,7 @@
       - git
       - python-dev
       - sshpass
+      - lxde
       
   - name: Create workspace directory
     file: path=/home/user/workspace state=directory mode=0755
@@ -61,3 +62,6 @@
 
   - name: Include OSHI-REST-server
     include: OSHI-REST-server.yml
+
+  - name: Set ownership of /home/user to user
+    file: path=/home/user recurse=yes owner=user group=user
