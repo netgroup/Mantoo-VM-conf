@@ -2,39 +2,27 @@
   - name: Clone dreamer-ryu repo
     git: repo=https://github.com/netgroup/dreamer-ryu.git dest=/home/user/workspace/dreamer-ryu  
 
-  - name: Install dreamer-ryu
-    shell: "python /home/user/workspace/dreamer-ryu/setup.py install"
-
   - name: Install libxml2-dev (apt)
-    action: apt pkg=libxml2-dev state=installed
+    action: apt pkg=libxml2-dev state=present
 
   - name: Install libxslt1-dev (apt)
-    action: apt pkg=libxslt1-dev state=installed
+    action: apt pkg=libxslt1-dev state=present
 
   - name: Install lib32z1-dev (apt)
-    action: apt pkg=lib32z1-dev state=installed
-  
-  - name: Install webob (pip)
-    pip: name=webob
+    action: apt pkg=lib32z1-dev state=present
 
-  - name: Install routes (pip)
-    pip: name=routes
+  - name: Install pbr (pip)
+    pip: name=pbr version=0.10.7
 
   - name: Install oslo.config (pip)
-    pip: name=oslo.config version=1.5.0
+    pip: name=oslo.config version=1.6.0
 
-  - name: Install msgpack-python (pip)
-    pip: name=msgpack-python
-
-  - name: Install lxml (pip)
-    pip: name=lxml
-
-  - name: Install eventlet (pip)
-    pip: name=eventlet
+  - name: Uninstall python-paramiko (apt)
+    action: apt pkg=python-paramiko state=absent
 
   - name: Install paramiko (pip)
-    pip: name=paramiko
+    pip: name=paramiko version=1.7.7.1
 
-  - name: Install netaddr (pip)
-    pip: name=netaddr
+  - name: Install dreamer-ryu
+    shell: "python /home/user/workspace/dreamer-ryu/setup.py install"
 
