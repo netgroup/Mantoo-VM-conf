@@ -30,8 +30,8 @@
 
 - name: Create Logstash configuration files.
   template:
-    src: "01-lumberjack-input.conf.j2"
-    dest: "/etc/logstash/conf.d/01-lumberjack-input.conf"
+    src: "01-http-input.conf.j2"
+    dest: "/etc/logstash/conf.d/01-http-input.conf"
     owner: root
     group: root
     mode: 0644
